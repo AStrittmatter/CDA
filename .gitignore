@@ -52,3 +52,6 @@ vignettes/*.pdf
 **/.auctex-auto/
 **/.ipynb_checkpoints/
 
+# files excluded from dir for now, to be added afterwards
+**/Slides/
+
