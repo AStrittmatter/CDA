@@ -45,5 +45,7 @@ vignettes/*.pdf
 *.synctex.gz
 *.toc
 *.vrb
-/_minted-slides/
-/tables/
+
+# subfolders with non-relevant files  
+**/_minted-slides/
+**/tables/
