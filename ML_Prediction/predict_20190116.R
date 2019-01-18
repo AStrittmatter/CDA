@@ -1,8 +1,9 @@
 
 setwd("C:/Users/user/Dropbox/PhD Kurs Basel/PC1")
 #setwd("D:/AStrittmatter/Dropbox/PhD Kurs Basel/PC1")
-
+#.libPaths("C:/Users/user/Dropbox/PhD Kurs Basel/PC1/Packages")
 ########################  Load Packages  ########################
+.libPaths("C:/Users/user/Documents/R/win-library/3.4")
 
 
 # List of required packages
@@ -20,10 +21,8 @@ for(pkg in pkgs){
 }
 
 
-if(!(pkg %in% 'dmlmt' )){
-  install_github('MCKnaus/pkg')
-}
-#install_github('MCKnaus/dmlmt')
+
+install_github('MCKnaus/dmlmt')
 library(dmlmt)
 
 print('All packages successfully installed and loaded.')
