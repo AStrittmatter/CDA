@@ -49,9 +49,12 @@ vignettes/*.pdf
 # subfolders with non-relevant files  
 **/_minted-slides/
 **/tables/
+**/resources/
 **/.auctex-auto/
 **/.ipynb_checkpoints/
 
 # files excluded from dir for now, to be added afterwards
 **/Slides/
+ggi*.*
+
 
