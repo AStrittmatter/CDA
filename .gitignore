@@ -57,7 +57,7 @@ vignettes/*.pdf
 **/.ipynb_checkpoints/
 
 # files excluded from dir for now, to be added afterwards
-# **/Slides/
+**/Slides/
 ggi*.*
 
 
