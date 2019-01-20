@@ -1,0 +1,39 @@
+CV_core                 This function contains the core parts of the CV
+                        for Lasso and Post-Lasso
+OLS_pred_w              This function calculates the OLS weights for
+                        the fitted values of each observation
+PO_dmlmt                This function calculates the potential outcomes
+                        for all treatment levels.
+PO_dmlmt_w              This function calculates the weights impled by
+                        Double Machine learning.
+PO_dmlmt_w_gen          This function calculates the weights impled by
+                        Double Machine learning if outcome weights are
+                        already calculated.
+TE_dmlmt                This function calculates the average treatment
+                        effects for all combinations. Requires input
+                        from 'PO_dmlmt'.
+add_intercept           Adds an intercept to a matrix
+dmlmt                   Double machine learning for binary and multiple
+                        treatments'
+find_Xse_ind            Function finds the position for pre-specified
+                        SE rules
+fitted_values           This function extracts a subset of active
+                        variables (nm_act) of the relavant variables
+                        from X'X and X'y to get out-of-sample
+                        predictions for a matrix containing only the
+                        active variables This speeds up the
+                        cross-validation for post-Lasso to a large
+                        extent
+gps_cs                  This function checks common support for a user
+                        provided matrix of (generalized) propensity
+                        scores
+gps_prep                This function prepares the (generalized)
+                        propensity scores and checks the common support
+                        after variable selection.
+norm_w_to_n             Function to normalize weights to N or to N in
+                        treated and controls separately
+post_lasso_cv           This function uses the 'glmnet' package to
+                        estimate the coefficient paths and
+                        cross-validates Lasso AND Post-Lasso
+y_prep                  This function prepares the fitted values of the
+                        outcome after variable selection.
