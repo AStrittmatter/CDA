@@ -132,13 +132,17 @@ response <- fromJSON(uri, flatten = TRUE)
 response$paging
 maxpages <- response$paging$pages
 records  <- response$paging$total
-columns  <- ncols(response$loans)
+columns  <- ncol(response$loans)
+
 
 ## Open csv, write header
 header <- names(response$loans)
 write.table(t(header), file = "Data/kiva.csv", sep = ";",
             col.names = FALSE, row.names = FALSE)
 
+# Or collect in data frame (don't do this for large jobs)
+## data <- data.frame(matrix(nrow = 0, ncol = columns))
+## names(data) <- header
 
 ## Simple helper function to flatten columns
 unnest <- function(col) paste(unlist(col), collapse = ", ")
@@ -165,13 +169,17 @@ for (p in seq(1, maxpages, by = 1)[1:3]) {
     loans$description.languages <- sapply(loans$description.languages, unnest)
     ## str(loans)
 
-    ## Write to file or append to object here
-    ## ...
+    ## Collect loans in data frame
+    ## data <- rbind(data, loans)
+
+    ## Append to file
     write.table(loans, "Data/kiva.csv", sep = ";", append = TRUE,
                 col.names = FALSE, row.names = FALSE)
 }
 
 
+## head(data)
+## dim(data)
 
 
 
