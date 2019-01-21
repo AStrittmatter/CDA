@@ -256,7 +256,7 @@ nbpred <- predict(nbclassifier, xtest)
 ## Performance statistics: Classification rate
 1-mean(as.numeric(nbpred != ytest))
 ## Performance statistics: Confusion matrix
-## table(nbpred, ytest)
+## table(nbpred, ytest)a
 caret::confusionMatrix(nbpred, ytest)
 ## gmodels::CrossTable(nbpred, ytest,
 ##                     prop.chisq = FALSE, chisq = FALSE, prop.t = FALSE,
@@ -268,6 +268,18 @@ caret::confusionMatrix(nbpred, ytest)
 ## Supervised text regression: L1 penalized logistic regression
 l1classifier <- cv.glmnet(xtrain, ytrain, alpha = 1, family = "binomial")
 l1pred <- as.factor(predict(l1classifier, xtest, s = "lambda.min", type = "class"))
+
+## Performance statistics: Classification rate
+1-mean(as.numeric(l1pred != ytest))
+## Performance statistics: Confusion matrix
+caret::confusionMatrix(l1pred, ytest)
+
+## L1 logistic classifier using rare feature upweighting
+sdweights <- apply(xtrain, 2, sd)
+l1classifier <- cv.glmnet(xtrain, ytrain, alpha = 1, family = "binomial",
+                          standardize = FALSE, penalty.factor  = sdweights)
+l1pred <- as.factor(predict(l1classifier, xtest, s = "lambda.min", type = "class",
+                            penalty.factor  = sdweights))
 
 ## Performance statistics: Classification rate
 1-mean(as.numeric(l1pred != ytest))
