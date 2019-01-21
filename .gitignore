@@ -49,15 +49,14 @@ vignettes/*.pdf
 *.sty
 *.run.xml
 
-# subfolders with non-relevant files  
+# subfolders with non-relevant files
 **/_minted-slides/
 **/tables/
 **/resources/
+**/auto/
 **/.auctex-auto/
 **/.ipynb_checkpoints/
 
 # files excluded from dir for now, to be added afterwards
-**/Slides/
+# **/Slides/
 ggi*.*
-
-
