@@ -153,7 +153,7 @@ termtfidf <- tapply(dtm$v/row_sums(dtm)[dtm$i], dtm$j, mean) *
 summary(termtfidf)
 
 ## Only include terms with above mean tf-idf score
-dtmw <- dtm[, (termtfidf >= 0.30)]
+dtmw <- dtm[, (termtfidf >= 0.15)]
 dim(dtmw)
 ## And documents within which these terms occur - this may induce selection
 dtmw <- dtmw[row_sums(dtmw) > 0, ]
@@ -192,16 +192,65 @@ table(sentiment)
 
 
 ## Unsupervised method: Topic model
-lda <- LDA(dtms, k = 2, control = list(seed = 100))
+## lda <- LDA(dtms, k = 2, control = list(seed = 100))
 ## lda <- LDA(dtms, k = 10, control = list(seed = 100))
-## lda <- LDA(dtmw, k = 2, control = list(seed = 100))
+lda <- LDA(dtmw, k = 2, control = list(seed = 100))
 ## lda <- LDA(dtmw, k = 10, control = list(seed = 100))
-str(lda)
+## str(lda)
 
 ## Most likely topic for each document, could merge this to original data
 ## topic <- topics(lda, 1)
 ## Five most frequent terms for each topic
-## terms(lda, 5)
+terms(lda, 5)
+
+## Plot most frequent terms and associated probabilities by topic
+tpm <- tidy(lda, matrix = "beta")
+topterms <-
+    tpm %>%
+    group_by(topic) %>%
+    top_n(10, beta) %>%
+    ungroup() %>%
+    arrange(topic, -beta)
+topterms %>%
+    mutate(term = reorder(term, beta)) %>%
+    ggplot(aes(term, beta, fill = factor(topic))) +
+    geom_col(show.legend = FALSE) +
+    facet_wrap(~ topic, scales = "free") +
+    coord_flip()
+
+
+## not working well: use loanuse text for classifier. filter by tfidf
+loanuse <- loans[, .(doc_id, loanuse)]
+setnames(loanuse, "loanuse", "text")
+dtmuse <- DocumentTermMatrix(Corpus(DataframeSource(loanuse)),
+                             control = list(weighting = weightTf,
+                                            language = "english",
+                                            tolower = TRUE,
+                                            removePunctuation = TRUE,
+                                            removeNumbers = TRUE,
+                                            stopwords = TRUE,
+                                            stemming = FALSE,
+                                            wordLengths = c(3, Inf)))
+inspect(dtmuse)
+
+termtfidf <- tapply(dtmuse$v/row_sums(dtmuse)[dtmuse$i], dtmuse$j, mean) *
+    log2(nDocs(dtmuse)/col_sums(dtmuse > 0))
+summary(termtfidf)
+
+## Filter by tf-idf
+## dim(dtmuse)
+dtmuse <- dtmuse[, (termtfidf >= 1.70)]
+dtmuse <- dtmuse[row_sums(dtmuse) > 0, ]
+## dim(dtmuse)
+
+## Unsupervised method: Topic model
+lda <- LDA(dtmuse, k = 6, control = list(seed = 100))
+## str(lda)
+
+## Most likely topic for each document, could merge this to original data
+topic <- topics(lda, 1)
+## Five most frequent terms for each topic
+terms(lda, 10)
 
 ## Plot most frequent terms and associated probabilities by topic
 tpm <- tidy(lda, matrix = "beta")
