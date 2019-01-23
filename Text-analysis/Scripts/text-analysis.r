@@ -28,8 +28,7 @@ chead <- function(c) lapply(c[1:2], as.character)
 
 
 ## Read data
-loans <- fread("Data/kiva-tiny.csv")
-## Loans <- fread("Data/kiva-small.csv")
+loans <- fread("Data/kiva-tiny.csv", encoding = "UTF-8")
 names(loans)
 
 
