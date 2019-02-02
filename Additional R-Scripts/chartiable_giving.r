@@ -112,7 +112,7 @@ print('Covariates are standardised.')
 print('The data is now ready for your analysis!')
 
 ########################  Potential Outcomes  ######################## 
-set.seed(100241)
+set.seed(100244)
 
 # Tuning parameters
 min_tree = 20
@@ -157,7 +157,7 @@ y0hat_A <- predict(f_y0_B, covariates_obs_A)$predictions
 print("Potential outcomes are estimated")
 
 ########################  Propensity Score  ######################## 
-set.seed(100242)
+set.seed(100243)
 
 # Tuning parameters
 min_tree = 20
@@ -216,7 +216,7 @@ ols <- lm(formula = char_giving ~ treat, data = df)
 summary(ols)
 
 ########################  Conditional Average Treatment Effects (CATE)  ########################
-set.seed(100235)
+set.seed(100234)
 
 # Tuning parameters
 min_tree = 20
@@ -323,6 +323,7 @@ abline(lm(cate1_hat~gprob), col="red") # regression line (y~x)
 
 ########################  Individualised Treatment Rules  ########################                         
 # Code based on Athey and Imbens, 2018, AEA lecture
+set.seed(100233)
 
 # Define transformed Variables
 sign_A = sign(Y_star_A)
@@ -360,6 +361,7 @@ pi_tree1_hold_out = 0.5*(pred_tree1_hold_out_A[,2]+ pred_tree1_hold_out_B[,2])
 
 ########################  Build Trees Deeper Tree  ########################                         
 ## Note: Asymptotic results hold only for trees with little complexity
+set.seed(100235)
 
 # Tree Sample A
 tree_2_A <- rpart(formula = str_c("Z_A ~ ", covariates), # Predict sign of treatment
