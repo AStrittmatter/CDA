@@ -1,4 +1,4 @@
-# this will install all required dependencies for the course
+# This will install all required dependencies for the course
 
 # Packages to be installed from CRAN
 install.packages(c("fBasics",
