@@ -31,7 +31,7 @@ dependencies:
   - r-doParallel
   - r-doSNOW
   - r-Rtools
-  - r-data.table- 
+  - r-data.table 
   - r-rvest
   - r-httr
   - r-jsonlite
@@ -49,4 +49,3 @@ dependencies:
   - r-cld2
   - r-cld3
   - r-RColorBrewer
-  devtools::install_github('MCKnaus/dmlmt')
