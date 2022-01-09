@@ -1,7 +1,7 @@
 channels:
   - conda-forge
 dependencies:
-  - r-base=3.6
+  - r-base=4.0
   - r-tidyverse
   - r-fbasics
   - r-corrplot
@@ -28,8 +28,6 @@ dependencies:
   - r-sandwich
   - r-diagrammer
   - r-neuralnet
-  - r-doParallel
-  - r-doSNOW
   - r-data.table 
   - r-rvest
   - r-httr
@@ -39,7 +37,6 @@ dependencies:
   - r-tidytext
   - r-topicmodels
   - r-wordcloud
-  - r-SentimentAnalysis
   - r-naivebayes
   - r-slam
   - r-lexicon
