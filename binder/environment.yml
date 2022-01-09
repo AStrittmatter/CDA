@@ -30,7 +30,6 @@ dependencies:
   - r-neuralnet
   - r-doParallel
   - r-doSNOW
-  - r-Rtools
   - r-data.table 
   - r-rvest
   - r-httr
