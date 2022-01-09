@@ -1,7 +1,7 @@
 channels:
   - conda-forge
 dependencies:
-  - r-base=4.0
+  - r-base=3.6
   - r-tidyverse
   - r-fbasics
   - r-corrplot
@@ -43,5 +43,4 @@ dependencies:
   - r-gmodels
   - r-qdap
   - r-cld2
-  - r-cld3
   - r-RColorBrewer
