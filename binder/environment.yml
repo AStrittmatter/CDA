@@ -28,25 +28,25 @@ dependencies:
   - r-sandwich
   - r-diagrammer
   - r-neuralnet
-- r-doParallel
-- r-doSNOW
-- r-Rtools
-- r-data.table- 
-- r-rvest
-- r-httr
-- r-jsonlite
-- r-xml2
-- r-tm
-- r-tidytext
-- r-topicmodels
-- r-wordcloud
-- r-SentimentAnalysis
-- r-naivebayes
-- r-slam
-- r-lexicon
-- r-gmodels
-- r-qdap
-- r-cld2
-- r-cld3
-- r-RColorBrewer
-devtools::install_github('MCKnaus/dmlmt')
+  - r-doParallel
+  - r-doSNOW
+  - r-Rtools
+  - r-data.table- 
+  - r-rvest
+  - r-httr
+  - r-jsonlite
+  - r-xml2
+  - r-tm
+  - r-tidytext
+  - r-topicmodels
+  - r-wordcloud
+  - r-SentimentAnalysis
+  - r-naivebayes
+  - r-slam
+  - r-lexicon
+  - r-gmodels
+  - r-qdap
+  - r-cld2
+  - r-cld3
+  - r-RColorBrewer
+  devtools::install_github('MCKnaus/dmlmt')
