@@ -44,4 +44,4 @@ dependencies:
   - r-qdap
   - r-doParallel
   - r-doSNOW
-
+  - r-dmlmt
