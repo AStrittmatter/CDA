@@ -42,5 +42,4 @@ dependencies:
   - r-lexicon
   - r-gmodels
   - r-qdap
-  - r-cld2
-  - r-RColorBrewer
+
