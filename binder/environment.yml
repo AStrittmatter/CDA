@@ -42,4 +42,6 @@ dependencies:
   - r-lexicon
   - r-gmodels
   - r-qdap
+  - r-doParallel
+  - r-doSNOW
 
